@@ -8,9 +8,11 @@ capabilities = {
     #     'androidPackage': 'com.android.chrome',
     # }
 }
+ios6ua = "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25"
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--incognito")
+chrome_options.add_argument("--user-agent=" + ios6ua)
 # chrome_options.add_argument("--disable-web-security")
 # chrome_options.add_argument("--enable-devtools-experiments")
 

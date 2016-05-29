@@ -139,7 +139,36 @@ def process_domains(table):
     for row in table:
         domain_list.append(row[URL_INDEX])
 
-    return len(set(domain_list))
+    domain_list = filter(lambda x: x, set(domain_list))
+
+    return len(domain_list)
+
+
+def dump_domain(table):
+    domain_list = []
+
+    for row in table:
+        domain_list.append(row[URL_INDEX])
+
+    domain_list = filter(lambda x: x, set(domain_list))
+    s = []
+
+    for dom in domain_list:
+        d = dom.split(".")
+
+        if len(d) > 1:
+            d_ = ".".join(d[1:])
+            d_ = "*." + d_
+            s.append(d_)
+
+    f = open("../domains.txt", "a")
+
+    for dom in set(s):
+        f.write(dom + "\n")
+
+    f.close()
+
+    pass
 
 
 def process_datasize(table):
@@ -170,6 +199,7 @@ def process(dir="../rawdata/"):
             table.append(_t.split(","))
 
         table = preprocess(table, filename)
+        dump_domain(table)
 
         protocol = "TBD"
         site = filename.split(".")[0]
@@ -200,11 +230,21 @@ def process(dir="../rawdata/"):
 
         f.close()
 
+    f = open("../domains.txt", "r")
+    a = f.read().split("\n")
+
+    h = open("../domain.txt", "w")
+
+    for i in set(a):
+        h.write(i + "\n")
+    h.close()
+
     g.close()
 
 
 if __name__ == "__main__":
     process()
+
 
 
 
