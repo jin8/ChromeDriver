@@ -15,14 +15,17 @@ chrome_options.add_argument("--incognito")
 # chrome_options.add_argument("--enable-devtools-experiments")
 
 
-driver = webdriver.Chrome(executable_path="driver/chromedriver",
-                          desired_capabilities=capabilities,
-                          chrome_options=chrome_options)
+# driver = webdriver.Chrome(executable_path="driver/chromedriver",
+#                           desired_capabilities=capabilities,
+#                           chrome_options=chrome_options)
 
 f = open("sites.txt", "r")
 sites = f.read().split("\n")
 
 for site in sites:
+    driver = webdriver.Chrome(executable_path="driver/chromedriver",
+                          desired_capabilities=capabilities,
+                          chrome_options=chrome_options)
     driver.delete_all_cookies()
     driver.get(site)
 
@@ -142,6 +145,6 @@ for site in sites:
     # for browser in driver.get_log('browser'):
     #     print(browser)
 
-driver.quit()
+    driver.quit()
 
 
