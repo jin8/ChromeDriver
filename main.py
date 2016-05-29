@@ -4,11 +4,9 @@ from selenium import webdriver
 
 capabilities = {
     'loggingPrefs': {'browser':'ALL', 'driver':'ALL', 'performance': 'ALL'},
-    'chromeOptions' : {
-        # 'chrome.switches': ["--incognito"],
-        # 'androidPackage': 'com.android.chrome',
-        # 'perfLoggingPrefs': {"traceCategories", "browser"}
-    }
+    # 'chromeOptions' : {
+    #     'androidPackage': 'com.android.chrome',
+    # }
 }
 
 chrome_options = webdriver.ChromeOptions()
@@ -147,12 +145,3 @@ for site in sites:
 driver.quit()
 
 
-'''
-driver = webdriver.Remote('http://localhost:9515', capabilities)
-driver.get('http://google.com')
-driver.get('http://yahoo.com')
-driver.get('http://daum.net')
-driver.get('http://naver.com')
-print(type(driver.get_log('performance')));
-driver.quit()
-'''
