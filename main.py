@@ -17,7 +17,7 @@ chrome_options.add_argument("--incognito")
 # chrome_options.add_argument("--enable-devtools-experiments")
 
 
-driver = webdriver.Chrome(executable_path=r"/home/limjs/chromedriver",
+driver = webdriver.Chrome(executable_path="driver/chromedriver",
                           desired_capabilities=capabilities,
                           chrome_options=chrome_options)
 
@@ -87,6 +87,7 @@ for site in sites:
                 data["method"] = inner_message["method"]
                 data["requestId"] = inner_message["params"]["requestId"]
                 data["param-timestamp"] = inner_message["params"]["timestamp"]
+                data['encodedDataLength'] = inner_message["params"]['encodedDataLength']
 
                 writer.writerow(data)
 
@@ -114,11 +115,11 @@ for site in sites:
                 # rawdata["frameId"] = inner_message["params"]["frameId"]
                 # rawdata["loadId"] = inner_message["params"]["loaderId"]
 
-                print(inner_message["params"]["request"]["url"])
+                # print(inner_message["params"]["request"]["url"])
 
                 try:
-                    print(inner_message["params"]["request"]["url"].split("//",1))
-                    print(inner_message["params"]["request"]["url"].split("//",1)[1].split("/",1)[0])
+                    # print(inner_message["params"]["request"]["url"].split("//",1))
+                    # print(inner_message["params"]["request"]["url"].split("//",1)[1].split("/",1)[0])
                     data["url"] = inner_message["params"]["request"]["url"].split("//",1)[1].split("/",1)[0]
                 except IndexError:
                     pass
@@ -132,6 +133,7 @@ for site in sites:
 
             elif(inner_message['method']=="Network.dataReceived"):
                 data["timestamp"] = entry["timestamp"]
+                data["requestId"] = inner_message["params"]["requestId"]
                 data["method"] = inner_message["method"]
                 data['dataLength'] = inner_message["params"]['dataLength']
                 data['encodedDataLength'] = inner_message["params"]['encodedDataLength']
@@ -139,8 +141,8 @@ for site in sites:
 
                 writer.writerow(data)
 
-    for browser in driver.get_log('browser'):
-        print(browser)
+    # for browser in driver.get_log('browser'):
+    #     print(browser)
 
 driver.quit()
 
