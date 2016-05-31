@@ -1,10 +1,5 @@
-http://m.imdb.com
-http://www.amazon.com
-http://www.yahoo.com
-http://www.apple.com
-http://www.reddit.com
-http://www.imgur.com
-http://www.google.com
-http://www.youtube.com
-http://en.wikipedia.org
-http://www.twitter.com
+https://m.imdb.com.this
+https://www.amazon.com.this
+https://www.apple.com.this
+https://m.imgur.com.this
+https://en.m.wikipedia.org.this/wiki/Main_Page
