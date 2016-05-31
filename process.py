@@ -160,10 +160,10 @@ def dump(table):
     pass
 
 
-def process(dir="rawdata/"):
+def process(mode, dir="rawdata/"):
     data_files = filter(
         lambda x: re.match(".+csv$", x),
-        os.listdir(dir))
+        filter(lambda x: mode in x, os.listdir(dir)))
 
     header = ["Protocol", "Site", "HandshakeTime", "PageLoadTime", "DOMLoadTime",
               "No.Plaintexts", "PlaintextsEncodedSize", "PlaintextsSize", "PlaintextsLoadTime",
@@ -231,7 +231,7 @@ def process(dir="rawdata/"):
 
 
 if __name__ == "__main__":
-    process()
+    process("quic")
 
 
 
