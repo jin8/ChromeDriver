@@ -146,6 +146,20 @@ def process_datasize(table):
     return 0, 0
 
 
+def dump(table):
+    domain_list = []
+
+    for row in table:
+        domain_list.append(row[URL_INDEX])
+
+    f = open("domains.txt", "a")
+
+    for dom in domain_list:
+        f.write(dom + "\n")
+
+    pass
+
+
 def process(dir="../rawdata/"):
     data_files = filter(
         lambda x: re.match(".+csv$", x),
@@ -199,6 +213,19 @@ def process(dir="../rawdata/"):
         )
 
         f.close()
+
+        dump(table)
+
+        h = open("domains.txt", "r")
+        f = open("domain.txt", "w")
+
+        dom = set(filter(lambda x: x and "." in x, h.read().split("\n")))
+
+        for d in dom:
+            f.write(d + "\n")
+
+        f.close()
+        h.close()
 
     g.close()
 
