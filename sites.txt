@@ -3,7 +3,6 @@ http://www.amazon.com
 http://www.yahoo.com
 http://www.apple.com
 http://www.reddit.com
-http://www.chinadaily.com.cn
 http://www.imgur.com
 http://www.google.com
 http://www.youtube.com
