@@ -11,7 +11,7 @@ PROTOCOL_INDEX = 8
 
 
 def preprocess(table, filename):
-    filename = filename.split(".")[0]
+    filename = filename.split("_")[0]
     # print filename
 
     while not filename in table[0][URL_INDEX]:
@@ -160,7 +160,7 @@ def dump(table):
     pass
 
 
-def process(dir="../rawdata/"):
+def process(dir="rawdata/"):
     data_files = filter(
         lambda x: re.match(".+csv$", x),
         os.listdir(dir))
@@ -172,7 +172,7 @@ def process(dir="../rawdata/"):
               "Images/Others", "Images/OthersEncodedSize", "Images/OthersSize", "Images/OthersLoadTime",
               "Domains", "EncodedDataSize", "TotalDataSize"]
 
-    g = open("../statistics.csv", "a")
+    g = open("statistics.csv", "a")
     g.write(",".join(header) + "\n")
 
     for filename in data_files:
@@ -185,8 +185,8 @@ def process(dir="../rawdata/"):
 
         table = preprocess(table, filename)
 
-        protocol = "TBD"
-        site = filename.split(".")[0]
+        protocol = filename.split("_")[1]
+        site = filename.split("_")[0]
         handshake_time = process_handshake(table)
         page_load_time = process_page_load_time(table)
         DOM_load_time = process_DOM_load_time(table)
@@ -214,18 +214,18 @@ def process(dir="../rawdata/"):
 
         f.close()
 
-        dump(table)
-
-        h = open("domains.txt", "r")
-        f = open("domain.txt", "w")
-
-        dom = set(filter(lambda x: x and "." in x, h.read().split("\n")))
-
-        for d in dom:
-            f.write(d + "\n")
-
-        f.close()
-        h.close()
+        # dump(table)
+        #
+        # h = open("domains.txt", "r")
+        # f = open("domain.txt", "w")
+        #
+        # dom = set(filter(lambda x: x and "." in x, h.read().split("\n")))
+        #
+        # for d in dom:
+        #     f.write(d + "\n")
+        #
+        # f.close()
+        # h.close()
 
     g.close()
 
