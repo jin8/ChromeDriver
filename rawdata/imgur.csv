@@ -1,5 +1,0 @@
-timestamp,method,requestId,url,mimeType,dataLength,encodedDataLength,param-timestamp,protocol
-1464524099116,Network.responseReceived,17529.1,,text/plain,,,6682.873847,data
-1464524099116,Network.loadingFinished,17529.1,,,,0,6682.873866,
-1464524099125,Page.loadEventFired,,,,,,6682.906578,
-1464524099130,Page.domContentEventFired,,,,,,6682.906827,
