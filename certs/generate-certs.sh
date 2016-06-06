@@ -21,19 +21,19 @@ try() {
 #try openssl genrsa -out out/2048-sha256-root.key 2048
 #
 ## Generate the root certificate.
-#try openssl req \
-#  -new \
-#  -key out/2048-sha256-root.key \
-#  -out out/2048-sha256-root.req \
-#  -config ca.cnf
-#
-#try openssl x509 \
-#  -req -days 3 \
-#  -in out/2048-sha256-root.req \
-#  -signkey out/2048-sha256-root.key \
-#  -extfile ca.cnf \
-#  -extensions ca_cert \
-#  -text > out/2048-sha256-root.pem
+try openssl req \
+  -new \
+  -key out/2048-sha256-root.key \
+  -out out/2048-sha256-root.req \
+  -config ca.cnf
+
+try openssl x509 \
+  -req -days 30 \
+  -in out/2048-sha256-root.req \
+  -signkey out/2048-sha256-root.key \
+  -extfile ca.cnf \
+  -extensions ca_cert \
+  -text > out/2048-sha256-root.pem
 
 # Generate the leaf certificate request.
 try openssl req \
