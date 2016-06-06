@@ -214,18 +214,18 @@ def process(mode, dir="rawdata/"):
 
         f.close()
 
-        dump(table)
-
-        h = open("domains.txt", "r")
-        f = open("domain.txt", "w")
-
-        dom = set(filter(lambda x: x and "." in x, h.read().split("\n")))
-
-        for d in dom:
-            f.write(d + "\n")
-
-        f.close()
-        h.close()
+        # dump(table)
+        #
+        # h = open("domains.txt", "r")
+        # f = open("domain.txt", "w")
+        #
+        # dom = set(filter(lambda x: x and "." in x, h.read().split("\n")))
+        #
+        # for d in dom:
+        #     f.write(d + "\n")
+        #
+        # f.close()
+        # h.close()
 
     g.close()
 

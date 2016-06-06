@@ -15,16 +15,18 @@ h1 = ""
 def main(mode, iterations):
     ios6ua = "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25"
 
-    if sys.platform == "darwin":
-        chrome_options.binary_location = "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
-
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.binary_location = "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
     chrome_options.add_argument("--incognito")
     chrome_options.add_argument("--ignore-certificate-errors")
     chrome_options.add_argument("--allow-running-insecure-content")
     chrome_options.add_argument("--enable-quic")
     chrome_options.add_argument("--user-agent=" + ios6ua)
+
+    if sys.platform == "darwin":
+        chrome_options.binary_location = "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
+    elif sys.platform == 'linux2':
+        chrome_options.binary_location = "/home/limjs/Downloads/google-chrome-unstable_current_amd64/opt/google/chrome-unstable/google-chrome-unstable"
+
     # chrome_options.add_argument("--disable-web-security")
     # chrome_options.add_argument("--enable-devtools-experiments")
     # driver = webdriver.Chrome(executable_path="driver/chromedriver",
@@ -94,10 +96,10 @@ def main(mode, iterations):
                             # "type":"",
 
                     message = json.loads(entry['message'])
-                    print(str(message)+",")
+                    # print(str(message)+",")
 
                     inner_message = message['message']
-                    print(inner_message)
+                    # print(inner_message)
 
                     if(inner_message['method'] == 'Network.responseReceived'):
                         data["timestamp"] = entry["timestamp"]
