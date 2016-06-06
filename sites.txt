@@ -1,5 +1,4 @@
-https://m.imdb.com
-https://www.amazon.com
-https://www.apple.com
-https://m.imgur.com
-https://en.m.wikipedia.org/wiki/Main_Page
+https://m.imdb.com.this
+https://www.amazon.com.this
+https://www.apple.com.this
+https://m.imgur.com.this
