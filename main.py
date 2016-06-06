@@ -13,10 +13,27 @@ h1 = ""
 
 
 def main(mode, iterations):
+    ios6ua = "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25"
+
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
+    chrome_options.add_argument("--incognito")
+    chrome_options.add_argument("--ignore-certificate-errors")
+    chrome_options.add_argument("--allow-running-insecure-content")
+    chrome_options.add_argument("--enable-quic")
+    chrome_options.add_argument("--user-agent=" + ios6ua)
+    # chrome_options.add_argument("--disable-web-security")
+    # chrome_options.add_argument("--enable-devtools-experiments")
+    # driver = webdriver.Chrome(executable_path="driver/chromedriver",
+    #                           desired_capabilities=capabilities,
+    #                           chrome_options=chrome_options)
+
     if mode == "quic":
         m = quic
+        chrome_options.add_argument(m)
     elif mode == "h2":
         m = h2
+        chrome_options.add_argument(m)
     elif mode == "h1":
         m = h1
     else:
@@ -30,21 +47,6 @@ def main(mode, iterations):
             #     'androidPackage': 'com.android.chrome',
             # }
         }
-        ios6ua = "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25"
-
-        chrome_options = webdriver.ChromeOptions()
-        chrome_options.binary_location = "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
-        chrome_options.add_argument("--incognito")
-        chrome_options.add_argument("--ignore-certificate-errors")
-        chrome_options.add_argument("--allow-running-insecure-content")
-        chrome_options.add_argument("--enable-quic")
-        chrome_options.add_argument("--user-agent=" + ios6ua)
-        chrome_options.add_argument(m)
-        # chrome_options.add_argument("--disable-web-security")
-        # chrome_options.add_argument("--enable-devtools-experiments")
-        # driver = webdriver.Chrome(executable_path="driver/chromedriver",
-        #                           desired_capabilities=capabilities,
-        #                           chrome_options=chrome_options)
 
         f = open("sites.txt", "r")
         sites = f.read().strip().split("\n")
@@ -177,4 +179,4 @@ def main(mode, iterations):
 
 if __name__ == "__main__":
     main(mode=sys.argv[1], iterations=sys.argv[2])
-    process()
+    process("quic")
