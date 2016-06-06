@@ -1,0 +1,9 @@
+timestamp,method,requestId,url,mimeType,dataLength,encodedDataLength,param-timestamp,protocol
+1465198927522,Page.loadEventFired,,,,,,13258.373576,
+1465198927522,Page.domContentEventFired,,,,,,13258.373876,
+1465198928483,Network.requestWillBeSent,8217.1,www.amazon.com.this,,,,13258.477152,
+1465198928483,Network.responseReceived,8217.1,,text/plain,,,13259.359851,h2
+1465198928496,Network.loadingFinished,8217.1,,,,130,13259.359021,
+1465198928503,Page.loadEventFired,,,,,,13259.383259,
+1465198928505,Page.domContentEventFired,,,,,,13259.383416,
+1465198928509,Network.requestWillBeSent,8217.2,www.amazon.com.this,,,,13259.389971,
