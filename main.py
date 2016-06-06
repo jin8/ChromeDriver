@@ -15,6 +15,9 @@ h1 = ""
 def main(mode, iterations):
     ios6ua = "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25"
 
+    if sys.platform == "darwin":
+        chrome_options.binary_location = "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
+
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
     chrome_options.add_argument("--incognito")
@@ -179,4 +182,4 @@ def main(mode, iterations):
 
 if __name__ == "__main__":
     main(mode=sys.argv[1], iterations=sys.argv[2])
-    process("quic")
+    process(sys.argv[1])
