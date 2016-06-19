@@ -1,0 +1,10 @@
+timestamp,method,requestId,url,mimeType,dataLength,encodedDataLength,param-timestamp,protocol
+1465306765722,Network.responseReceived,3460.1,,text/plain,,,10583.461965,data
+1465306765722,Network.loadingFinished,3460.1,,,,0,10583.462014,
+1465306765725,Page.loadEventFired,,,,,,10583.505501,
+1465306765726,Page.domContentEventFired,,,,,,10583.505644,
+1465306766350,Network.requestWillBeSent,3483.1,m.imgur.com.this,,,,10583.571866,
+1465306766350,Network.responseReceived,3483.1,,text/plain,,,10584.13223,h2
+1465306766365,Network.loadingFinished,3483.1,,,,130,10584.131157,
+1465306766372,Page.loadEventFired,,,,,,10584.157301,
+1465306766373,Page.domContentEventFired,,,,,,10584.157615,

@@ -160,7 +160,7 @@ def dump(table):
     pass
 
 
-def process(mode, dir="rawdata/"):
+def process(mode, dir):
     data_files = filter(
         lambda x: re.match(".+csv$", x),
         filter(lambda x: mode in x, os.listdir(dir)))
@@ -172,11 +172,12 @@ def process(mode, dir="rawdata/"):
               "Images/Others", "Images/OthersEncodedSize", "Images/OthersSize", "Images/OthersLoadTime",
               "Domains", "EncodedDataSize", "TotalDataSize"]
 
-    g = open("statistics.csv", "a")
-    g.write(",".join(header) + "\n")
+    g = open(dir + "/statistics.csv", "a")
+    if os.path.getsize(dir + "/statistics.csv") == 0:
+        g.write(",".join(header) + "\n")
 
     for filename in data_files:
-        f = open(dir + filename, "r")
+        f = open(dir + '/' + filename, "r")
         _table = f.read().split("\n")
         table = []
 

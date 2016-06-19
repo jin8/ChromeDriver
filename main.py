@@ -2,6 +2,7 @@ import csv
 import json
 import random
 import sys
+import os
 
 from selenium import webdriver
 
@@ -12,7 +13,7 @@ h2 = "--disable-quic"
 h1 = ""
 
 
-def main(mode, iterations):
+def main(mode, network, iterations):
     ios6ua = "Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25"
 
     chrome_options = webdriver.ChromeOptions()
@@ -25,7 +26,7 @@ def main(mode, iterations):
     if sys.platform == "darwin":
         chrome_options.binary_location = "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
     elif sys.platform == 'linux2':
-        chrome_options.binary_location = "/home/limjs/Downloads/google-chrome-unstable_current_amd64/opt/google/chrome-unstable/google-chrome-unstable"
+        chrome_options.binary_location = os.getcwd() + "/google-chrome-unstable_current_amd64/opt/google/chrome-unstable/google-chrome-unstable"
 
     # chrome_options.add_argument("--disable-web-security")
     # chrome_options.add_argument("--enable-devtools-experiments")
@@ -71,7 +72,7 @@ def main(mode, iterations):
 
             site_name = site.split(".")[1] + "_" + mode + "_" + str(i)
 
-            with open('rawdata/' + site_name + '.csv', 'w') as csvfile:
+            with open(network + "/" + site_name + '.csv', 'w') as csvfile:
                 fieldnames = ["timestamp", "method", "requestId",
                               "url", "mimeType", "dataLength",
                               "encodedDataLength", "param-timestamp", "protocol"] #"frameId", "loadId", "requestId", #"status", "url","documentURL", "type"
@@ -183,5 +184,5 @@ def main(mode, iterations):
             driver.quit()
 
 if __name__ == "__main__":
-    main(mode=sys.argv[1], iterations=sys.argv[2])
-    process(sys.argv[1])
+    main(mode=sys.argv[1], network=sys.argv[2], iterations=sys.argv[3])
+    process(sys.argv[1], sys.argv[2])

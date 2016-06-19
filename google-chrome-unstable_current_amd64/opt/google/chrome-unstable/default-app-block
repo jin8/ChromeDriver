@@ -1,0 +1,10 @@
+    <web-browser>
+      <name>Google Chrome (unstable)</name>
+      <executable>/opt/google/chrome-unstable/google-chrome-unstable</executable>
+      <command>/opt/google/chrome-unstable/google-chrome-unstable %s</command>
+      <icon-name>google-chrome-unstable</icon-name>
+      <run-in-terminal>false</run-in-terminal>
+      <netscape-remote>true</netscape-remote>
+      <tab-command>/opt/google/chrome-unstable/google-chrome-unstable %s</tab-command>
+      <win-command>/opt/google/chrome-unstable/google-chrome-unstable --new-window %s</win-command>
+    </web-browser>
